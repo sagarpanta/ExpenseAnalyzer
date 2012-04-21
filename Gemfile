@@ -6,10 +6,6 @@ gem 'rails', '3.2.3'
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 
-<<<<<<< HEAD
-=======
-
->>>>>>> 287c1965d187851cffa0d95c0b1375f7936fa7e3
 gem 'tabulous'
 
 
