@@ -1,0 +1,33 @@
+
+
+<%= form_for(@category) do |f| %>
+  <% if @category.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@category.errors.count, "error") %> prohibited this category from being saved:</h2>
+
+      <ul>
+      <% @category.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :categorytype %><br />
+	<%= select(:category, :categorytype, Category::TYPES.collect {|t| [t, Category::TYPES.index(t)]}) %>
+	
+  </div>
+  <div class="field">
+    <%= f.label :expense %><br />
+    <%= f.text_field :expense %>
+  </div>
+  <div class="field">
+    <%= f.label :date_spent %><br />
+    <%= f.date_select :date_spent %>
+  </div>
+ 
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

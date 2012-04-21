@@ -1,0 +1,36 @@
+// Place all the styles related to the graphs controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+body {
+  background-color: #CCCCFF;
+  color: #333;
+  font-family: verdana, arial, helvetica, sans-serif;
+  font-size: 13px;
+  line-height: 18px;
+  padding-left: 150px;
+  padding-right: 150px;
+  padding-top: 10px;
+  padding-bottom: 10px}
+  
+table {
+	border: 1px solid #CCCCFF;
+	background-color: #f2f2f2;
+        width: 100%;
+	border-radius: 6px;
+	-webkit-border-radius: 6px;
+	-moz-border-radius: 6px;
+}
+
+
+  
+  #graph g1
+  {float: left}
+  
+    #graph g2
+  {float: right;
+  padding :0px}
+  
+.td1 {float: right }
+

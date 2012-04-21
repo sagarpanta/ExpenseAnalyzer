@@ -1,0 +1,22 @@
+<div id="header"><h1>Listing categories</h1></div>
+
+<table border = "1" id="table">
+  <tr>
+    <th width = "150">Category Type</th>
+    <th>Expense</th>
+    <th>Date spent</th>
+  </tr>
+
+<% @categories.each do |category| %>
+  <tr>
+    <td class="td1"><%= Category::TYPES[category.categorytype.to_i] %></td>
+    <td class="td1"><%= category.expense %></td>
+    <td class="td1"><%= category.date_spent %></td>
+	<td><%= link_to image_tag('/assets/edit.png'), edit_category_path(category) %><%= link_to image_tag('/assets/delete.png'), category, {:onclick => "return confirm('Are you sure?')", :method=>:delete } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Category', new_category_path %>

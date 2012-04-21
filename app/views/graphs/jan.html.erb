@@ -1,0 +1,51 @@
+<h1><%= @title %></h1>
+<script type="text/javascript" src="/assets/swfobject.js"></script>
+<table>
+<td>
+    
+	MTD Expenses: <%  Category.find(:all, :group => "month_name").collect{|c|[c.month_name, Category.sum("expense", :conditions=>"month_name='January'")] }.each do |exp|  %>
+				  <%= exp[1] %>
+				  <% end %>
+</td>
+<table>
+
+
+
+<table>
+
+<td><%=  link_to 'January' , 'jan', :method => :get %></td>
+<td></td>
+<td><%=  link_to 'February' , 'feb', :method => :get %></td>
+<td></td>
+<td><%=  link_to 'March' , 'mar', :method => :get %></td>
+<td></td>
+<td><%=  link_to 'April' , 'apr', :method => :get %></td>
+<td></td>
+<td><%=  link_to 'May' , 'may', :method => :get %></td>
+<td></td>
+<td><%=  link_to 'June' , 'jun', :method => :get %></td>
+<td></td>
+<td><%=  link_to 'July' , 'jul', :method => :get %></td>
+<td></td>
+<td><%=  link_to 'August' , 'aug', :method => :get %></td>
+<td></td>
+<td><%=  link_to 'September' , 'sep', :method => :get %></td>
+<td></td>
+<td><%=  link_to 'October' , 'oct', :method => :get %></td>
+<td></td>
+<td><%=  link_to 'November' , 'nov', :method => :get %></td>
+<td></td>
+<td><%=  link_to 'December' , 'dec', :method => :get %></td>
+
+
+<table>
+
+<table>
+	<td><div id="graph"><g1><%=  @grph.html_safe %></g1></div></td>
+	<td><div id="graph"><g2><%=  @grph1.html_safe %></g2></div></td>
+	
+<table>
+
+
+
+

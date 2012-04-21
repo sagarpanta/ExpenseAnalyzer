@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  categorytype: MyString
+  expense: 9.99
+  date_spent: 2012-04-11
+  week_id: 1
+  month_id: 1
+  month_name: MyString
+  year: 1
+
+two:
+  categorytype: MyString
+  expense: 9.99
+  date_spent: 2012-04-11
+  week_id: 1
+  month_id: 1
+  month_name: MyString
+  year: 1

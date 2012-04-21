@@ -1,0 +1,58 @@
+<h1><%= @title %></h1>
+<script type="text/javascript" src="/assets/swfobject.js"></script>
+
+<table>
+<td>
+    <% Category.find(:all, :select => 'DISTINCT month_name',:order => 'date_spent desc', :limit => '1').each do |cat| %>
+	MTD Expenses: <%  Category.find(:all, :group => "month_name").collect{|c|[c.month_name, Category.sum("expense", :conditions=>"month_name='#{cat.month_name}'")] }.each do |exp|  %>
+				  <%= exp[1] %>
+				  <% end %>
+</td>
+
+<td class="td1">Current Month: <%= cat.month_name %>
+	<% Category.set_month_name(cat.month_name) %>
+	<% end %>
+</td>
+<table>
+
+
+<table>
+
+<td><%=  link_to 'January' , 'graphs/jan', :method => :get %></td>
+<td></td>
+<td><%=  link_to 'February' , 'graphs/feb', :method => :get %></td>
+<td></td>
+<td><%=  link_to 'March' , 'graphs/mar', :method => :get %></td>
+<td></td>
+<td><%=  link_to 'April' , 'graphs/apr', :method => :get %></td>
+<td></td>
+<td><%=  link_to 'May' , 'graphs/may', :method => :get %></td>
+<td></td>
+<td><%=  link_to 'June' , 'graphs/jun', :method => :get %></td>
+<td></td>
+<td><%=  link_to 'July' , 'graphs/jul', :method => :get %></td>
+<td></td>
+<td><%=  link_to 'August' , 'graphs/aug', :method => :get %></td>
+<td></td>
+<td><%=  link_to 'September' , 'graphs/sep', :method => :get %></td>
+<td></td>
+<td><%=  link_to 'October' , 'graphs/oct', :method => :get %></td>
+<td></td>
+<td><%=  link_to 'November' , 'graphs/nov', :method => :get %></td>
+<td></td>
+<td><%=  link_to 'December' , 'graphs/dec', :method => :get %></td>
+
+
+<table>
+<font color='white' size='1'>
+
+<table>
+		
+	<td><div id="graph"><g1><%=  @grph.html_safe %></g1></div></td>
+	<td><div id="graph"><g2><%=  @grph1.html_safe %></g2></div></td>
+	
+<table>
+
+
+
+

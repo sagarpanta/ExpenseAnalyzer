@@ -1,0 +1,40 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Categorytype:</b>
+  <%= @category.categorytype %>
+</p>
+
+<p>
+  <b>Expense:</b>
+  <%= @category.expense %>
+</p>
+
+<p>
+  <b>Date spent:</b>
+  <%= @category.date_spent %>
+</p>
+
+<p>
+  <b>Week:</b>
+  <%= @category.week_id %>
+</p>
+
+<p>
+  <b>Month:</b>
+  <%= @category.month_id %>
+</p>
+
+<p>
+  <b>Month name:</b>
+  <%= @category.month_name %>
+</p>
+
+<p>
+  <b>Year:</b>
+  <%= @category.year %>
+</p>
+
+
+<%= link_to 'Edit', edit_category_path(@category) %> |
+<%= link_to 'Back', categories_path %>
