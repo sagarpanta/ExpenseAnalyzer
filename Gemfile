@@ -5,12 +5,11 @@ gem 'rails', '3.2.3'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
-gem 'sqlite3'
-gem 'scruffy'
-gem 'tabulous'
-gem 'jquery_datepicker'
 
-gem 'pry' , :group => :development
+gem 'tabulous'
+
+
+gem 'pry' , :group => [:development , :test]
 
 
 # Gems used only for assets and not required
