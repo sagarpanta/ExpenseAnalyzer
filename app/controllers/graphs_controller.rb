@@ -103,9 +103,9 @@ class GraphsController < ApplicationController
 	
 	
 	
-  	@categories = Category.all(:group=>"categorytype").collect{|c| [c.categorytype, Category.sum("expense", :conditions=>"categorytype='#{c.categorytype}' and month_name = '#{Category.get_month_name}'")] }
-	
-	
+  
+	# @categories = Category.all(:group=>"id, categorytype, ").collect{|c| [c.categorytype, Category.sum("expense", :conditions=>"categorytype='#{c.categorytype}' and month_name = '#{Category.get_month_name}'")] }
+	@categories = Category.where("categorytype = ? and month_name = ?", c.categorytype, Category.get_month_name ).select("categorytype, SUM(expense) expse").group("categorytype")
   	@categories.each do |category|
    		bar_.data << category[1]
 		
