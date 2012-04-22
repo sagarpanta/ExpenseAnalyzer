@@ -4,7 +4,7 @@
 <table>
 <td>
     <% Category.find(:all, :select => 'DISTINCT month_name, date_spent',:order => 'date_spent desc', :limit => '1').each do |cat| %>
-	MTD Expenses: <%  Category.where("month_name = ?",cat.month_name).select("month_name, SUM(expense) ").group("month_name").each do |exp|  %>
+	MTD Expenses: <%  Category.where("month_name = ?",cat.month_name).group("month_name").sum(:expense).each do |exp|  %>
 				  <%= exp[1] %>
 				  <% end %>
 </td>

@@ -9,6 +9,7 @@ gem 'rails', '3.2.3'
 gem 'tabulous'
 
 
+
 gem 'pry' , :group => [:development , :test]
 group :production do
   gem 'pg'

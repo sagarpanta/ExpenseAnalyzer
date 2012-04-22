@@ -104,7 +104,7 @@ class GraphsController < ApplicationController
 	
 	
   
-	# @categories = Category.all(:group=>"id, categorytype, ").collect{|c| [c.categorytype, Category.sum("expense", :conditions=>"categorytype='#{c.categorytype}' and month_name = '#{Category.get_month_name}'")] }
+	#@categories = Category.all(:group=>"id, categorytype, ").collect{|c| [c.categorytype, Category.sum("expense", :conditions=>"categorytype='#{c.categorytype}' and month_name = '#{Category.get_month_name}'")] }
 	@categories = Category.where("month_name = ?",Category.get_month_name).group("categorytype").sum(:expense)
   	@categories.each do |category|
    		bar_.data << category[1]
@@ -200,65 +200,82 @@ class GraphsController < ApplicationController
 	
 	cat_id = 0
 	id0 = id1 =id2 =id3 =id4 =id5 =id6 = id7 = 0
+	date_counter = 0
+
+	hash_length = []
 	
-
-	counter = 1
+	bar_id = []
+	bar_values = Hash.new
 	
-	@dates.each do |d|
-	
-		@categories = Category.where("date_spent = ?" , d.date_spent).select("categorytype").group("categorytype").sum(:expense)
-		@categories.each do |category|
-				cat_id = category[0].to_i
-				if cat_id == 0 
-					bar0.data << category[1]
-					val0[id0]= category[1]
-					id0+=1
-					
-				elsif cat_id == 1 
-					bar1.data << category[1]
-					val1[id1]= category[1]
-					id1+=1
-
-				elsif cat_id == 2 
-					bar2.data << category[1]
-					val2[id2]= category[1]
-					id2+=1
-
-				elsif cat_id == 3 
-					bar3.data << category[1]
-					val3[id3]= category[1]
-					id3+=1
-					
-				elsif cat_id == 4 
-					bar4.data << category[1]
-					val4[id4]= category[1]
-					id4+=1
-					
-				elsif cat_id == 5 
-					bar5.data << category[1]
-					val5[id5]= category[1]
-					id5+=1
-					
-					
-				elsif cat_id == 6 
-					bar6.data << category[1]
-					val6[id6]= category[1]
-					id6+=1
-
-				elsif cat_id == 7 
-					bar7.data << category[1]
-					val7[id7]= category[1]
-					id7+=1
-
-				end
-			
-				
-			
+	8.times do |x|
+		@dates.each do |d|
+			bar_values[d.date_spent] = 0	
 		end
+		bar_id[x] = bar_values
+
+		bar_values = Hash.new
+		
 	end
 	
 	
+	id = 0
+	
+	@dates.each do |d|
+		@categories = Category.where("date_spent = ?" , d.date_spent).group("categorytype").sum(:expense)
+		#@categories = Category.all(:group=>"categorytype", :order=> 'categorytype').collect{|c| [c.categorytype, Category.sum("expense", :conditions=>"categorytype='#{c.categorytype}' and date_spent='#{d.date_spent}'")] }
+		@categories.each do |category|
+				cat_id = category[0].to_i
+				if cat_id == 0 
+					bar_id[cat_id][d.date_spent] = category[1]
+								
+					
+				elsif cat_id == 1
+					bar_id[cat_id][d.date_spent] = category[1]
+				
+				
+				elsif cat_id == 2
+					bar_id[cat_id][d.date_spent] = category[1]
+	
+				
 
+				elsif cat_id == 3
+					bar_id[cat_id][d.date_spent] = category[1]
+				
+					
+				elsif cat_id == 4
+					bar_id[cat_id][d.date_spent] = category[1]
+				
+					
+				elsif cat_id == 5
+					bar_id[cat_id][d.date_spent] = category[1]
+				
+					
+				elsif cat_id == 6
+					bar_id[cat_id][d.date_spent] = category[1]
+				
+
+				elsif cat_id == 7
+					bar_id[cat_id][d.date_spent] = category[1]
+
+				end
+			
+			
+		id += 1		
+			
+		end
+	end
+
+	@dates.each do |d|
+		bar0.data << bar_id[0][d.date_spent]
+		bar1.data << bar_id[1][d.date_spent]
+		bar2.data << bar_id[2][d.date_spent]
+		bar3.data << bar_id[3][d.date_spent]
+		bar4.data << bar_id[4][d.date_spent]
+		bar5.data << bar_id[5][d.date_spent]
+		bar6.data << bar_id[6][d.date_spent]
+		bar7.data << bar_id[7][d.date_spent]
+	end
+	
 
 
 	cattypes = []
