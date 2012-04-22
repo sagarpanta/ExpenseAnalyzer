@@ -206,7 +206,7 @@ class GraphsController < ApplicationController
 	
 	@dates.each do |d|
 	
-		@categories = Category.where("date_spent = ?" , d.date_spent).sum(:expense).group("categorytype")
+		@categories = Category.where("date_spent = ?" , d.date_spent).group("categorytype").sum(:expense)
 		@categories.each do |category|
 				cat_id = category[0].to_i
 				if cat_id == 0 
