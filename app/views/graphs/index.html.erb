@@ -3,8 +3,7 @@
 
 <table>
 <td>
-	<!Category.find(:all, :select => 'DISTINCT month_name ORDER BY date_spent desc limit 1',:order => 'date_spent desc', :limit => '1').each do |cat| !>
-    <% Category.find(:all, :select => 'DISTINCT month_name',:order => 'date_spent desc', :limit => '1').each do |cat| %>
+    <% Category.find(:all, :select => 'DISTINCT month_name, date_spent',:order => 'date_spent desc', :limit => '1').each do |cat| %>
 	MTD Expenses: <%  Category.find(:all, :group => "month_name").collect{|c|[c.month_name, Category.sum("expense", :conditions=>"month_name='#{cat.month_name}'")] }.each do |exp|  %>
 				  <%= exp[1] %>
 				  <% end %>
