@@ -1,5 +1,5 @@
-<div id="header"><h1>Listing categories</h1></div>
-
+<table>
+<div id="header"><h1>Listing Expenses</h1></div>
 <table border = "1" id="table">
   <tr>
     <th width = "150">Category Type</th>
@@ -7,7 +7,7 @@
     <th>Date spent</th>
   </tr>
 
-<% @categories.each do |category| %>
+<% Category.where('user_id = ?', current_user.id).each do |category| %>
   <tr>
     <td class="td1"><%= Category::TYPES[category.categorytype.to_i] %></td>
     <td class="td1"><%= category.expense %></td>
@@ -19,4 +19,4 @@
 
 <br />
 
-<%= link_to 'New Category', new_category_path %>
+<%= link_to 'New Expense', new_category_path %>

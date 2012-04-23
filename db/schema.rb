@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120420044655) do
+ActiveRecord::Schema.define(:version => 20120423020550) do
 
   create_table "categories", :force => true do |t|
     t.string   "categorytype"
@@ -23,17 +23,22 @@ ActiveRecord::Schema.define(:version => 20120420044655) do
     t.integer  "year"
     t.datetime "created_at",   :null => false
     t.datetime "updated_at",   :null => false
+    t.integer  "user_id"
   end
 
   create_table "users", :force => true do |t|
     t.string   "firstname"
     t.string   "lastname"
-    t.string   "email"
     t.string   "username"
+    t.string   "email"
+    t.datetime "created_at",                      :null => false
+    t.datetime "updated_at",                      :null => false
+    t.string   "remember_token"
     t.string   "salt"
-    t.string   "hashed_password"
-    t.datetime "created_at",      :null => false
-    t.datetime "updated_at",      :null => false
+    t.string   "encrypted_password"
+    t.string   "encrypted_password_confirmation"
   end
+
+  add_index "users", ["remember_token"], :name => "index_users_on_remember_token"
 
 end

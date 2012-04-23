@@ -7,7 +7,7 @@ gem 'rails', '3.2.3'
 
 
 gem 'tabulous'
-
+#gem 'sqlite3'  , :group => [:development, :test]
 
 
 gem 'pry' , :group => [:development , :test]

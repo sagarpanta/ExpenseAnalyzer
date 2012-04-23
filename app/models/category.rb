@@ -3,9 +3,12 @@
 
 
 class Category < ActiveRecord::Base
-  attr_accessible :categorytype, :date_spent, :expense, :month_id, :month_name, :week_id,  :year , :TYPES
+  attr_accessible :categorytype, :date_spent, :expense, :month_id, :month_name, :week_id,  :year , :TYPES , :user_id
   TYPES = ['Grocery', 'Gas' ,'Clothes' ,'Rent' , 'Insurance' , 'Household & Accessories' , 'Others' , 'Travelling']
 
+  belongs_to :user
+  
+  validates_presence_of :user_id
 
  def self.set_month_name(monthname)
 	@temp_month_name = monthname
@@ -41,5 +44,9 @@ class Category < ActiveRecord::Base
 	 self.week_id = date_spent.strftime("%w").to_i
 	 self.year = date_spent.strftime("%y").to_i
   end
+  
+
+  
+
   
 end
