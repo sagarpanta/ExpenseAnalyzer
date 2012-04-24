@@ -2,14 +2,15 @@ class CategoriesController < ApplicationController
   # GET /categories
   # GET /categories.json
   def index
-    @categories = Category.all
-
-
-
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @categories }
-    end
+	if signed_in?
+		@categories = Category.all
+		respond_to do |format|
+			format.html # index.html.erb
+			format.json { render json: @categories }
+		end
+	else 
+		redirect_to users_url
+	end
   end
   
 

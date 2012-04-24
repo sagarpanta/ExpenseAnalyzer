@@ -1,0 +1,41 @@
+
+
+<div id="header"><h1><%= image_tag '/assets/design1.png' %></h1></div>
+<div id="left-sidebar">
+<% if !signed_in? %>
+	<%= form_for(:session, :url => sessions_path) do |f| %>
+	  <div class="field">
+		<%= f.label :username %><br />
+		<%= f.text_field :username, :size => 10 %>
+	  </div>
+	  <div class="field">
+		<%= f.label :password %><br />
+		<%= f.password_field :password , :size => 10 %>
+	  </div>
+	  <div class="actions">
+		<%= f.submit "Sign In" %>
+	  </div>
+	  
+	<p>New user? <br/><%= link_to "Sign up now!", signup_path %></p>
+	<% end %>
+<% else %>
+	SIGNED IN AS <br/>
+	<%= current_user.username %><br/>
+	<%= link_to "Sign out" , signout_path %>
+<% end %>
+
+
+
+</div>
+
+<div id="right-sidebar">
+<%= image_tag '/assets/design2.png' %>
+</div>
+<div id="bottom_div">
+	<h2>ABOUT EXPENSE ANALYZER</h2><br /><br />
+	<ul>
+		<li>a simple web app to see your monthly expenses on the predefined categories</li>
+		<li>lets you enter expenses at any time and see the visuals how your are spending</li>
+		<li>spend wisely and make your wife happy </li>
+	</ul>
+</div>

@@ -57,6 +57,7 @@ Tabulous.setup do |config|
       #------------------------------------------------------------------------------------------------------#
       #    TAB NAME           |    DISPLAY TEXT    |    PATH               |    VISIBLE?    |    ENABLED?    #
       #------------------------------------------------------------------------------------------------------#
+	  [    :static_pages_tab  ,    'Home'             ,  '/static_pages/home' ,    true        ,    true        ],
       [    :graphs_tab        ,    'Expense Analysis' ,    graphs_path        ,    true        ,    true        ],
       [    :categories_tab    ,    'Expense Entry'    ,    categories_path    ,    true        ,    true        ],
       [    :users_tab         ,    'Users'            ,    users_path         ,    true        ,    true        ]
@@ -85,6 +86,7 @@ Tabulous.setup do |config|
       #----------------------------------------------------------------#
       #    CONTROLLER     |    ACTION          |    TAB                #
       #----------------------------------------------------------------#
+      [    :static_pages  ,    :all_actions    ,    :static_pages_tab  ],
       [    :graphs        ,    :all_actions    ,    :graphs_tab        ],
       [    :categories    ,    :all_actions    ,    :categories_tab    ],
       [    :users         ,    :all_actions    ,    :users_tab         ]
@@ -159,11 +161,11 @@ Tabulous.setup do |config|
 
   # You can tweak the colors of the generated CSS.
   #
-   config.css.background_color = '#9999CC	'
+   config.css.background_color = '#FFCC00	'
    config.css.text_color = '#444'
-   config.css.active_tab_color = '#CCCC66'
-   config.css.hover_tab_color = '#ddd'
-   config.css.inactive_tab_color = '#FFCC00'
+   config.css.active_tab_color = '#E6D380'
+   config.css.hover_tab_color = '#E6D380'
+   config.css.inactive_tab_color = '#D9BE42'
    config.css.inactive_text_color = '#888'
 
 end

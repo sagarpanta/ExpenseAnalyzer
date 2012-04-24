@@ -7,14 +7,14 @@
     <th>Date spent</th>
   </tr>
 
-<% Category.where('user_id = ?', current_user.id).each do |category| %>
-  <tr>
-    <td class="td1"><%= Category::TYPES[category.categorytype.to_i] %></td>
-    <td class="td1"><%= category.expense %></td>
-    <td class="td1"><%= category.date_spent %></td>
-	<td><%= link_to image_tag('/assets/edit.png'), edit_category_path(category) %><%= link_to image_tag('/assets/delete.png'), category, {:onclick => "return confirm('Are you sure?')", :method=>:delete } %></td>
-  </tr>
-<% end %>
+	<% Category.where('user_id = ?', current_user.id).each do |category| %>
+	  <tr>
+		<td class="td1"><%= Category::TYPES[category.categorytype.to_i] %></td>
+		<td class="td1"><%= category.expense %></td>
+		<td class="td1"><%= category.date_spent %></td>
+		<td><%= link_to image_tag('/assets/edit.png'), edit_category_path(category) %><%= link_to image_tag('/assets/delete.png'), category, {:onclick => "return confirm('Are you sure?')", :method=>:delete } %></td>
+	  </tr>
+	<% end %>
 </table>
 
 <br />

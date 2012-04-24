@@ -105,7 +105,7 @@ class GraphsController < ApplicationController
 	
   
 	#@categories = Category.all(:group=>"id, categorytype, ").collect{|c| [c.categorytype, Category.sum("expense", :conditions=>"categorytype='#{c.categorytype}' and month_name = '#{Category.get_month_name}'")] }
-	@categories = Category.where("month_name = ?",Category.get_month_name).group("categorytype").sum(:expense)
+	@categories = Category.where("month_name = ? and user_id = ?",Category.get_month_name, current_user.id).group("categorytype").sum(:expense)
   	@categories.each do |category|
    		bar_.data << category[1]
 		
@@ -120,13 +120,14 @@ class GraphsController < ApplicationController
   		@categorytypes << Category::TYPES[x[0].to_i]
   	end 
 	
-	@dates = Category.find(:all, :select => 'DISTINCT date_spent', :conditions=>"month_name = '#{Category.get_month_name}'", :order => 'date_spent')
+	@dates = Category.find(:all, :select => 'DISTINCT date_spent', :conditions=>"month_name = '#{Category.get_month_name}' and user_id = '#{current_user.id}'", :order => 'date_spent')
 
 	
 	if !@dates.empty?
 		g.set_x_labels(@categorytypes)
 	end
-	g.set_bg_color('#FFFFFF')
+	g.set_bg_color('#FFCC00')
+	g.set_inner_background('#E6E6FA', '#FFFFFF', 20)
   	g.set_x_label_style(10, '#9933CC', 0, 0)
   	g.set_x_axis_steps(0)
   	g.set_y_max(2000)
@@ -166,7 +167,7 @@ class GraphsController < ApplicationController
 	
 	g = Graph.new
 	g.title("Daily Expenses Grouped by Category", "{font-size: 18px;}")
-	@dates = Category.find(:all, :select => 'DISTINCT date_spent', :conditions=>"month_name = '#{Category.get_month_name}'", :order => 'date_spent')
+	@dates = Category.find(:all, :select => 'DISTINCT date_spent', :conditions=>"month_name = '#{Category.get_month_name}' and user_id = '#{current_user.id}'", :order => 'date_spent')
 
 
 	bar0 = Bar.new(50, colors[0])
@@ -221,7 +222,7 @@ class GraphsController < ApplicationController
 	id = 0
 	
 	@dates.each do |d|
-		@categories = Category.where("date_spent = ?" , d.date_spent).group("categorytype").sum(:expense)
+		@categories = Category.where("date_spent = ? and user_id = ?" , d.date_spent, current_user.id).group("categorytype").sum(:expense)
 		#@categories = Category.all(:group=>"categorytype", :order=> 'categorytype').collect{|c| [c.categorytype, Category.sum("expense", :conditions=>"categorytype='#{c.categorytype}' and date_spent='#{d.date_spent}'")] }
 		@categories.each do |category|
 				cat_id = category[0].to_i
@@ -280,7 +281,7 @@ class GraphsController < ApplicationController
 
 	cattypes = []
 	id = 0
-	@categorytypes = Category.find(:all, :select => 'DISTINCT categorytype', :order => 'categorytype')
+	@categorytypes = Category.find(:all, :select => 'DISTINCT categorytype', :conditions=>"user_id = '#{current_user.id}' " , :order => 'categorytype')
 	@categorytypes.each do |category|
 		cattypes[id] = category.categorytype
 		id +=1
@@ -344,7 +345,8 @@ class GraphsController < ApplicationController
 		@date_spent << x.date_spent
 		date_counter += 1
 	end 
-	g.set_bg_color('#FFFFFF')
+	g.set_bg_color('#FFCC00')
+	g.set_inner_background('#E6E6FA', '#FFFFFF', 20)
 	g.set_x_labels(@date_spent)
 	
 	orientation = 0

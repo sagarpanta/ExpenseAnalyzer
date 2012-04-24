@@ -1,0 +1,10 @@
+ 
+
+<div id="header"><h2>
+      <% if signed_in? %>
+      <%= current_user.username %> | <%= link_to "Sign out", signout_path, :method => :delete %>
+	  <% else %>
+	  <%= link_to "Sign In", signin_path %>
+      <% end %>
+</h2>
+</div>

@@ -1,0 +1,92 @@
+// Place all the styles related to the StaticPages controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+body {
+
+  background: url('HomePage4.png') no-repeat center center fixed;
+  font-family: "curlz MT";
+  font-size: 13px;
+  line-height: 18px;
+
+}
+  
+
+#header h1 {
+
+float: right;	
+}
+
+
+#bottom_div
+{
+position: absolute;
+bottom: 0;
+height:27%;
+width:100%;
+background-color: #FFCC00;
+font-family: "curlz mt";
+background-size: 100%
+}
+		 
+#bottom_div h2 {
+	font-size: 22px;
+	font-weight: bold;
+	position: absolute;
+	top:  10%;
+	left: 32%
+}
+
+
+
+
+ul {
+	font-size: 18px;
+	font-weight: normal;
+	position: absolute;
+	top: 30%;
+	left: 30%;
+	right:5%;
+	list-style-type: circle;
+	text-align:left;
+	line-height: 1.5em;
+}
+
+#img {position: absolute;
+	  top: 38%;
+	  left: 12%}
+
+div#left-sidebar{
+  background-color: #FFCC00;
+  border: 2px;
+  padding: 10px;
+  position:absolute;
+  top:0;
+  left:0;
+  width:100px;
+  height:75%;
+  margin: 8.25px;
+ }
+ 
+ 
+ 
+ div#right-sidebar{
+	position: absolute;
+	top: 17.25%;
+	left:89.155%;
+	right: 0%;
+
+ }
+ 
+ 
+ 
+ 
+ 
+
+
+
+		  
+	
+
+		

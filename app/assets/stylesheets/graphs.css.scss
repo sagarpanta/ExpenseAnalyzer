@@ -4,9 +4,9 @@
 
 
 body {
-  background-color: #CCCCFF;
+  background-color: #fff;
   color: #333;
-  font-family: verdana, arial, helvetica, sans-serif;
+  font-family: "curlz mt";
   font-size: 13px;
   line-height: 18px;
   padding-left: 150px;
@@ -15,15 +15,17 @@ body {
   padding-bottom: 10px}
   
 table {
-	border: 1px solid #CCCCFF;
-	background-color: #f2f2f2;
+	border: 1px solid #fff;
+	background-color: #FFCC00;
         width: 100%;
 	border-radius: 6px;
 	-webkit-border-radius: 6px;
 	-moz-border-radius: 6px;
 }
 
-
+p{
+	font-family: verdana, arial, helvetica, sans-serif;
+}
 
 
   
