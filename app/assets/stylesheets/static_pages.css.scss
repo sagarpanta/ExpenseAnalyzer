@@ -5,7 +5,7 @@
 
 body {
 
-  background: url('HomePage4.png') no-repeat center center fixed;
+  background: url('HomePage5.png') no-repeat top right  fixed;
   font-family: "curlz MT";
   font-size: 13px;
   line-height: 18px;
@@ -41,7 +41,7 @@ background-size: 100%
 
 
 
-ul {
+#bottom-list ul {
 	font-size: 18px;
 	font-weight: normal;
 	position: absolute;
@@ -53,9 +53,29 @@ ul {
 	line-height: 1.5em;
 }
 
+#nowriting-list ul {
+	font-size: 18px;
+	font-weight: normal;
+	position: absolute;
+	top: 30%;
+	left: 10%;
+	list-style-type: circle;
+	text-align:left;
+	line-height: 1.5em;
+}
+
 #img {position: absolute;
-	  top: 38%;
-	  left: 12%}
+	  top: 5%;
+	  left: 10%}
+	  
+#img ul {
+	font-size: 18px;
+	font-weight: bold;
+
+	list-style-type: circle;
+	text-align:left;
+	line-height: 1.5em;
+}
 
 div#left-sidebar{
   background-color: #FFCC00;

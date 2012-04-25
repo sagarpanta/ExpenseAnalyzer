@@ -1,6 +1,6 @@
 
 
-<div id="header"><h1><%= image_tag '/assets/design1.png' %></h1></div>
+
 <div id="left-sidebar">
 <% if !signed_in? %>
 	<%= form_for(:session, :url => sessions_path) do |f| %>
@@ -28,14 +28,21 @@
 
 </div>
 
-<div id="right-sidebar">
-<%= image_tag '/assets/design2.png' %>
+<div id="img">
+	<%= image_tag '/assets/nowriting.png' %>
+	<ul>
+		<li>Don't have license for MS Office?</li>
+		<li>Dont't have a smart phone?</li>
+		<li>Tired on documenting on paper?</li>
+	</ul>
 </div>
 <div id="bottom_div">
 	<h2>ABOUT EXPENSE ANALYZER</h2><br /><br />
-	<ul>
+	<div id="bottom-list">
+		<ul>
 		<li>a simple web app to see your monthly expenses on the predefined categories</li>
 		<li>lets you enter expenses at any time and see the visuals how your are spending</li>
 		<li>spend wisely and make your wife happy </li>
-	</ul>
+		</ul>
+	</div>
 </div>
