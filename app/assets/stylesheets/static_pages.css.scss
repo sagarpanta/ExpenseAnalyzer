@@ -22,8 +22,8 @@ float: right;
 #bottom_div
 {
 position: absolute;
-bottom: 0;
-height:27%;
+bottom: 0%;
+height:23%;
 width:100%;
 background-color: #FFCC00;
 font-family: "curlz mt";
@@ -44,7 +44,7 @@ background-size: 100%
 #bottom-list ul {
 	font-size: 18px;
 	font-weight: normal;
-	position: absolute;
+	position: relative;
 	top: 30%;
 	left: 30%;
 	right:5%;
